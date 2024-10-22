@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import team4.footwithme.member.jwt.JwtTokenUtil;
 
 @Component
-@RequiredArgsConstructor
 public class StompHandler implements ChannelInterceptor {
 
     private final JwtTokenUtil jwtTokenUtil;
