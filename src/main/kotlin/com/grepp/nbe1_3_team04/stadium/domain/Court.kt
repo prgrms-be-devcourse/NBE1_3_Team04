@@ -18,7 +18,7 @@ class Court(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val courtId: Long? = null
+    val courtId: Long? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stadium_id", nullable = false)
