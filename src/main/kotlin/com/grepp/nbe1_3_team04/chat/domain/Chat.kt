@@ -10,7 +10,7 @@ import java.io.Serializable
 
 @Entity
 @SQLDelete(sql = "UPDATE chat SET is_deleted = 'true' WHERE chat_id = ?")
-class Chat(
+class Chat private constructor(
     chatroom: Chatroom,
     member: Member,
     chatType: ChatType,
@@ -19,8 +19,7 @@ class Chat(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var chatId: Long? = null
-        protected set
+    val chatId: Long? = null
 
     @ManyToOne
     @JoinColumn(name = "chatroom_id", nullable = false)

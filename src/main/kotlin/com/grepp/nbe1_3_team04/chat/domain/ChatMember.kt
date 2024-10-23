@@ -13,15 +13,14 @@ import org.hibernate.annotations.SQLDelete
 
 @Entity
 @SQLDelete(sql = "UPDATE chat_member SET is_deleted = 'true' WHERE chat_member_id = ?")
-class ChatMember (
+class ChatMember private constructor(
     member: Member,
     chatroom: Chatroom
 ) : BaseEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var ChatMemberId: Long? = null
-        protected set
+    val chatMemberId: Long? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)

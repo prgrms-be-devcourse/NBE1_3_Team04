@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 
 @SQLDelete(sql = "UPDATE member SET is_deleted = 'TRUE' WHERE member_id = ?")
 @Entity
-class Member(
+class Member private constructor(
     email: String,
     password: String?,
     name: String,
@@ -19,8 +19,7 @@ class Member(
 ) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var memberId: Long? = null
-        protected set
+    val memberId: Long? = null
 
     @Column(nullable = false, unique = true)
     val email: String = email

@@ -3,7 +3,7 @@ package com.grepp.nbe1_3_team04.chat.domain
 import jakarta.persistence.Entity
 
 @Entity
-class ReservationChatroom (
+class ReservationChatroom private constructor(
     name: String,
     reservationId: Long
 ) : Chatroom(name) {
