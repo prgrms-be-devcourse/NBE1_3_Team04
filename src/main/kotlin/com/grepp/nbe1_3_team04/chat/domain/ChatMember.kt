@@ -19,12 +19,10 @@ class ChatMember private constructor(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
-    @field:NotNull
     val member: Member = member
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chatroom_id", nullable = false)
-    @field:NotNull
     val chatroom: Chatroom = chatroom
 
     companion object {

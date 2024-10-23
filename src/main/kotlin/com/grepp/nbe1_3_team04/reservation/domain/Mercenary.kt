@@ -2,7 +2,6 @@ package com.grepp.nbe1_3_team04.reservation.domain
 
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
 import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.SQLDelete
 
 @SQLDelete(sql = "UPDATE mercenary SET is_deleted = 'TRUE' WHERE mercenary_id = ?")
@@ -11,13 +10,13 @@ class Mercenary private constructor(
     reservation: Reservation,
     description: String?
 ) : BaseEntity() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val mercenaryId: Long? = null
 
     @JoinColumn(name = "reservation_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    @field: NotNull
     var reservation: Reservation = reservation
         protected set
 

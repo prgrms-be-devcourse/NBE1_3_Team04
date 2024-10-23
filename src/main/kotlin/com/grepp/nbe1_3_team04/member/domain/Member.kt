@@ -2,7 +2,6 @@ package com.grepp.nbe1_3_team04.member.domain
 
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
 import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.SQLDelete
 import org.springframework.security.crypto.password.PasswordEncoder
 
@@ -22,19 +21,16 @@ class Member private constructor(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val memberId: Long? = null
 
-    @field:NotNull
     @Column(nullable = false, unique = true)
     val email: String = email
 
     var password: String? = password
         protected set
 
-    @field:NotNull
     @Column(nullable = false)
     var name: String = name
         protected set
 
-    @field:NotNull
     @Column(nullable = false)
     var phoneNumber: String = phoneNumber
         protected set
@@ -43,18 +39,15 @@ class Member private constructor(
     val loginType: LoginType = loginType
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
     @Column(nullable = false)
     var gender: Gender = gender
         protected set
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
     @Column(nullable = false)
     val memberRole: MemberRole = memberRole
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
     @Column(nullable = false)
     val termsAgreed: TermsAgreed = termsAgreed
 

@@ -3,7 +3,6 @@ package com.grepp.nbe1_3_team04.reservation.domain
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
 import com.grepp.nbe1_3_team04.member.domain.Member
 import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.SQLDelete
 
 @SQLDelete(sql = "UPDATE participant SET is_deleted = 'TRUE' WHERE participant_id = ?")
@@ -12,8 +11,8 @@ class Participant private constructor(
     reservation: Reservation,
     member: Member,
     participantRole: ParticipantRole
-) :
-    BaseEntity() {
+) : BaseEntity() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val participantId: Long? = null
@@ -25,7 +24,6 @@ class Participant private constructor(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    @field: NotNull
     var participantRole: ParticipantRole = participantRole
         protected set
 

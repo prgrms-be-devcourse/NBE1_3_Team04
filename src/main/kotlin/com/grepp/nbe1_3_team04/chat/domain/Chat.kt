@@ -3,7 +3,6 @@ package com.grepp.nbe1_3_team04.chat.domain
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
 import com.grepp.nbe1_3_team04.member.domain.Member
 import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.SQLDelete
 import java.io.Serial
 import java.io.Serializable
@@ -23,22 +22,18 @@ class Chat private constructor(
 
     @ManyToOne
     @JoinColumn(name = "chatroom_id", nullable = false)
-    @field:NotNull
     var chatRoom: Chatroom = chatroom
         protected set
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
-    @field:NotNull
     var member: Member = member
         protected set
 
-    @field:NotNull
     @Column(nullable = false)
     var text: String = text
         protected set
 
-    @field:NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     var chatType: ChatType = chatType

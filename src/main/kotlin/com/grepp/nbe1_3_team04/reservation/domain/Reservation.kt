@@ -16,43 +16,37 @@ class Reservation private constructor(
     matchDate: LocalDateTime,
     reservationStatus: ReservationStatus,
     gender: ParticipantGender
-) :
-    BaseEntity() {
+) : BaseEntity() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val reservationId: Long? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @field:NotNull
     @JoinColumn(name = "court_id", nullable = false)
     var court: Court = court
         protected set
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @field:NotNull
     @JoinColumn(name = "member_id", nullable = false)
     var member: Member = member
         protected set
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @field:NotNull
     @JoinColumn(name = "team_id", nullable = false)
     var team: Team = team
         protected set
 
-    @field:NotNull
     @Column(nullable = false)
     var matchDate: LocalDateTime = matchDate
         protected set
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
     @Column(nullable = false)
     var reservationStatus: ReservationStatus = reservationStatus
         protected set
 
     @Enumerated(EnumType.STRING)
-    @field:NotNull
     @Column(nullable = false)
     var gender: ParticipantGender = gender
         protected set
