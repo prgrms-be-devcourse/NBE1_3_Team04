@@ -28,10 +28,10 @@ class Vote private constructor(
     val voteId: Long? = null
 
     @Column(length = 50)
-    var title: @NotNull String? = null
+    var title: @NotNull String? = title
         protected set
 
-    var endAt: @NotNull LocalDateTime? = null
+    var endAt: @NotNull LocalDateTime? = endAt
         protected set
 
     @Enumerated(EnumType.STRING)
