@@ -1,20 +1,13 @@
 package com.grepp.nbe1_3_team04.member.domain
 
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
-import jakarta.persistence.Column
-import jakarta.persistence.Embedded
-import jakarta.persistence.Entity
-import jakarta.persistence.EnumType
-import jakarta.persistence.Enumerated
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import org.hibernate.annotations.SQLDelete
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @SQLDelete(sql = "UPDATE member SET is_deleted = 'TRUE' WHERE member_id = ?")
 @Entity
-class Member(
+class Member private constructor(
     email: String,
     password: String?,
     name: String,
@@ -26,7 +19,7 @@ class Member(
 ) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val memberId: Long? = null
+    val memberId: Long? = null
 
     @Column(nullable = false, unique = true)
     val email: String = email
