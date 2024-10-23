@@ -1,6 +1,8 @@
 package com.grepp.nbe1_3_team04.chat.domain
 
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.validation.constraints.NotNull
 
 @Entity
 class TeamChatroom private constructor(
@@ -8,6 +10,8 @@ class TeamChatroom private constructor(
     teamId: Long
 ) : Chatroom(name) {
 
+    @field:NotNull
+    @Column(nullable = false)
     var teamId: Long = teamId
         protected set
 

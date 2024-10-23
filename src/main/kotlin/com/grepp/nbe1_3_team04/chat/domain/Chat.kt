@@ -23,19 +23,25 @@ class Chat private constructor(
 
     @ManyToOne
     @JoinColumn(name = "chatroom_id", nullable = false)
+    @field:NotNull
     var chatRoom: Chatroom = chatroom
         protected set
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
+    @field:NotNull
     var member: Member = member
         protected set
 
-    var text: @NotNull String = text
+    @field:NotNull
+    @Column(nullable = false)
+    var text: String = text
         protected set
 
+    @field:NotNull
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    var chatType: @NotNull ChatType = chatType
+    var chatType: ChatType = chatType
         protected set
 
     fun updateMessage(message: String) {

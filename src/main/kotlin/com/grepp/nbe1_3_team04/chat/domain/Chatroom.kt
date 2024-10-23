@@ -20,7 +20,9 @@ class Chatroom(
     var chatroomId: Long? = null
         protected set
 
-    var name: @NotNull String = name
+    @field:NotNull
+    @Column(nullable = false)
+    var name: String = name
         protected set
 
     fun updateName(name: String) {
