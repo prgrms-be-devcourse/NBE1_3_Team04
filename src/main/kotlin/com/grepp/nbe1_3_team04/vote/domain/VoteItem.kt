@@ -6,14 +6,16 @@ import jakarta.persistence.*
 @DiscriminatorColumn
 @Entity
 open class VoteItem(
-    @JoinColumn(name = "vote_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    val vote: Vote
+    vote: Vote
 ) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val voteItemId: Long? = null
+
+    @JoinColumn(name = "vote_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    val vote: Vote = vote
 
     init {
         vote.addChoice(this)
