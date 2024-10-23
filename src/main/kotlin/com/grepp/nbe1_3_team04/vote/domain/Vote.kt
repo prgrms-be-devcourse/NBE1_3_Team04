@@ -28,14 +28,14 @@ class Vote private constructor(
     val voteId: Long? = null
 
     @Column(length = 50)
-    var title: @NotNull String? = title
+    var title: String = title
         protected set
 
-    var endAt: @NotNull LocalDateTime? = endAt
+    var endAt: LocalDateTime = endAt
         protected set
 
     @Enumerated(EnumType.STRING)
-    var voteStatus: @NotNull VoteStatus = VoteStatus.OPENED
+    var voteStatus: VoteStatus = VoteStatus.OPENED
         protected set
 
     @OneToMany(mappedBy = "vote")
@@ -50,7 +50,7 @@ class Vote private constructor(
         this.voteStatus = VoteStatus.CLOSED
     }
 
-    fun update(updateTitle: String?, updateEndAt: LocalDateTime?, memberId: Long) {
+    fun update(updateTitle: String, updateEndAt: LocalDateTime, memberId: Long) {
         checkWriterFromMemberId(memberId)
         this.title = updateTitle
         this.endAt = updateEndAt
@@ -65,7 +65,7 @@ class Vote private constructor(
     }
 
     val instantEndAt: Instant
-        get() = endAt!!.atZone(ZoneId.systemDefault()).toInstant()
+        get() = endAt.atZone(ZoneId.systemDefault()).toInstant()
 
     companion object {
         fun create(memberId: Long, teamId: Long, title: String, endAt: LocalDateTime): Vote {
