@@ -5,7 +5,7 @@ import jakarta.persistence.*
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
 @Entity
-open class VoteItem(
+class VoteItem(
     vote: Vote
 ) {
 

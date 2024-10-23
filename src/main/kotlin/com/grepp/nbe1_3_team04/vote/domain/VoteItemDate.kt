@@ -12,7 +12,7 @@ class VoteItemDate private constructor(
     val time: LocalDateTime
 
     init {
-        vote.endAt?.let { validateTime(time, it) }
+        validateTime(time, vote.endAt)
         this.time = time
     }
 
