@@ -17,8 +17,8 @@ import java.time.ZoneId
 @SQLDelete(sql = "UPDATE vote SET is_deleted = 'TRUE' WHERE vote_id = ?")
 @Entity
 class Vote private constructor(
-    val memberId: Long,
-    val teamId: Long,
+    memberId: Long,
+    teamId: Long,
     title: String,
     endAt: LocalDateTime
 ) : BaseEntity() {
@@ -26,6 +26,10 @@ class Vote private constructor(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val voteId: Long? = null
+
+    val memberId: Long = memberId
+
+    val teamId: Long = teamId
 
     @Column(length = 50)
     var title: String = title

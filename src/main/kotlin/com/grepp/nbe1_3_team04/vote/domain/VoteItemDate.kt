@@ -9,11 +9,10 @@ class VoteItemDate private constructor(
     time: LocalDateTime
 ) : VoteItem(vote) {
 
-    val time: LocalDateTime
+    val time: LocalDateTime = time
 
     init {
         validateTime(time, vote.endAt)
-        this.time = time
     }
 
     private fun validateTime(time: LocalDateTime, endAt: LocalDateTime) {
