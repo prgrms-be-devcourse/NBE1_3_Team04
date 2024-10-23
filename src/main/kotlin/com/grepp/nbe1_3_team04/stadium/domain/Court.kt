@@ -9,7 +9,7 @@ import org.hibernate.annotations.SQLDelete;
 
 @SQLDelete(sql = "UPDATE court SET is_deleted = 'TRUE' WHERE court_id = ?")
 @Entity
-class Court(
+class Court private constructor(
     stadium: Stadium,
     name: String,
     description: String?,

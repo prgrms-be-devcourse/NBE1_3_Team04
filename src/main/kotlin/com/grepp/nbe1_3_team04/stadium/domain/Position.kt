@@ -5,7 +5,7 @@ import jakarta.persistence.Embeddable
 
 
 @Embeddable
-class Position(
+class Position private constructor(
     latitude: Double,
     longitude: Double,
 ) {
@@ -20,5 +20,11 @@ class Position(
     fun updatePosition(latitude: Double, longitude: Double) {
         this.latitude = latitude
         this.longitude = longitude
+    }
+
+    companion object {
+        fun of(latitude: Double, longitude: Double): Position {
+            return Position(latitude, longitude)
+        }
     }
 }

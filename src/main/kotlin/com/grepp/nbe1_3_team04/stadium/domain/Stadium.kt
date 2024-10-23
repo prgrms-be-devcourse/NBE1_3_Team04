@@ -9,7 +9,7 @@ import org.hibernate.annotations.SQLDelete
 
 @SQLDelete(sql = "UPDATE stadium SET is_deleted = 'TRUE' WHERE stadium_id = ?")
 @Entity
-class Stadium(
+class Stadium private constructor(
     member: Member,
     name: String,
     address: String,
@@ -91,7 +91,7 @@ class Stadium(
             latitude: Double,
             longitude: Double
         ): Stadium {
-            val position = Position(latitude, longitude)
+            val position = Position.of(latitude, longitude)
             return Stadium(member, name, address, phoneNumber, description, position)
         }
     }
