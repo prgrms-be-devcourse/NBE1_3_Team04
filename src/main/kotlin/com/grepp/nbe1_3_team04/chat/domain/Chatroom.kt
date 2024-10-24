@@ -2,7 +2,6 @@ package com.grepp.nbe1_3_team04.chat.domain
 
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
 import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.SQLDelete
 import java.io.Serial
 import java.io.Serializable
@@ -20,7 +19,8 @@ class Chatroom(
     var chatroomId: Long? = null
         protected set
 
-    var name: @NotNull String = name
+    @Column(nullable = false)
+    var name: String = name
         protected set
 
     fun updateName(name: String) {

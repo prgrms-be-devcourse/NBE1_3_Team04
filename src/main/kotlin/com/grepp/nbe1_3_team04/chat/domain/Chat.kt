@@ -3,7 +3,6 @@ package com.grepp.nbe1_3_team04.chat.domain
 import com.grepp.nbe1_3_team04.global.domain.BaseEntity
 import com.grepp.nbe1_3_team04.member.domain.Member
 import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.SQLDelete
 import java.io.Serial
 import java.io.Serializable
@@ -31,11 +30,13 @@ class Chat private constructor(
     var member: Member = member
         protected set
 
-    var text: @NotNull String = text
+    @Column(nullable = false)
+    var text: String = text
         protected set
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    var chatType: @NotNull ChatType = chatType
+    var chatType: ChatType = chatType
         protected set
 
     fun updateMessage(message: String) {
